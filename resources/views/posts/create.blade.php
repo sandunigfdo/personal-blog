@@ -1,7 +1,9 @@
 <x-app-layout>
 
     <div class="pb-12">
-        <form>
+        <form method="POST" action="{{ route('posts.store') }}">
+            @csrf
+            
             <div class="bg-white">
                 <div class="mx-auto max-w-2xl px-6 lg:px-8">                
 
