@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('posts.index');
+// });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +30,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('posts', PostController::class)->only(['index', 'store', 'create'])->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/', [PostController::class, 'index'])->name('home');
+
+
+    Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+    Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::patch('posts/{post}', [PostController::class, 'update'])->name('posts.update');
+    Route::get('posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
+    Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.delete');
+});
+
+// Route::resource('posts', PostController::class)->only(['index', 'store', 'create', 'edit', 'update', 'show'])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
