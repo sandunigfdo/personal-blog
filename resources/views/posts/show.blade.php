@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="group relative">                                
-                                <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">                                
+                                <p class="mt-5 line-clamp-3 text-sm leading-6 text-black text-justify">                                
                                 {{ $post->body }}
                                 </p>
                             </div>                        
