@@ -35,6 +35,8 @@ class PostPolicy
     /**
      * Determine whether the user can update the model.
      */
+    
+    // Only the author is authorized to update a post
     public function update(User $user, Post $post): bool
     {
         return $post->user()->is($user);
