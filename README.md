@@ -1,2 +1,1 @@
-
-
+### Setup Personal Blog Locally
