@@ -18,7 +18,7 @@
                         <article class="max-w-xl items-start">              
                             <div class="flex items-center gap-x-4 text-xs justify-between">
                                 <div>
-                                    <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>
+                                    <time class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>
                                     @unless ($post->created_at->eq($post->updated_at))
                                         <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
                                     @endunless
@@ -36,7 +36,7 @@
                                                 </button>
                                             </x-slot>
                                             <x-slot name="content">
-                                                <x-dropdown-link href="#">
+                                                <x-dropdown-link :href="route('posts.edit', $post)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>
                                             </x-slot>
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="group relative">                                
-                                <p class="mt-5 line-clamp-3 text-sm leading-6 text-black text-justify">                                
+                                <p class="mt-5 text-sm leading-6 text-black text-justify">                                
                                 {{ $post->body }}
                                 </p>
                             </div>                        
