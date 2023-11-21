@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::patch('posts/{post}', [PostController::class, 'update'])->name('posts.update');
     Route::get('posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
-    Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.delete');
+    Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 // Route::resource('posts', PostController::class)->only(['index', 'store', 'create', 'edit', 'update', 'show'])->middleware(['auth', 'verified']);
