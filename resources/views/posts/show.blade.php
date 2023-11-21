@@ -18,10 +18,12 @@
                         <article class="max-w-xl items-start">              
                             <div class="flex items-center gap-x-4 text-xs justify-between">
                                 <div>
-                                    <time class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>
-                                    @unless ($post->created_at->eq($post->updated_at))
-                                        <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
-                                    @endunless
+
+                                    @if ($post->created_at->eq($post->updated_at))
+                                        <time class="text-gray-500">{{ __('Published :time', ['time' => $post->created_at->diffForHumans()]) }}</time>
+                                    @endif
+                                        <time class="text-gray-500">{{ __('Edited :time', ['time' => $post->updated_at->diffForHumans()]) }}</time>
+
                                     <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Category</a>
                                 </div>
                                 
@@ -39,6 +41,13 @@
                                                 <x-dropdown-link :href="route('posts.edit', $post)">
                                                     {{ __('Edit') }}
                                                 </x-dropdown-link>
+                                                <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <x-dropdown-link :href="route('posts.destroy', $post)" onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        {{ __('Delete') }}
+                                                    </x-dropdown-link>
+                                                </form>
                                             </x-slot>
                                         </x-dropdown>
                                     @endif
