@@ -21,9 +21,9 @@
 
                                     @if ($post->created_at->eq($post->updated_at))
                                         <time class="text-gray-500">{{ __('Published :time', ['time' => $post->created_at->diffForHumans()]) }}</time>
-                                    @endif
+                                    @else
                                         <time class="text-gray-500">{{ __('Edited :time', ['time' => $post->updated_at->diffForHumans()]) }}</time>
-
+                                    @endif
                                     <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Category</a>
                                 </div>
                                 
@@ -64,10 +64,17 @@
                                 <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                                 <div class="text-sm leading-6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="/profile">
+                                    @if ($post->user->is(auth()->user()))   
+                                        <a href="/profile">                                        
                                             <span class="absolute inset-0"></span>
                                             {{ $post->user->name }}
                                         </a>
+                                    @else
+                                        <a href="{{ route('posts.show', $post) }}">                                        
+                                            <span class="absolute inset-0"></span>
+                                            {{ $post->user->name }}                                    
+                                        </a>
+                                    @endif
                                     </p>                                
                                 </div>
                             </div>
