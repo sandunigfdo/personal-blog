@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
@@ -44,6 +45,12 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::patch('posts/{post}', [PostController::class, 'update'])->name('posts.update');
     Route::get('posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
     Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function (){
+    
+    Route::post('posts/{post:id}/comments', [CommentController::class, 'store'])->name('comments.store');
+    
 });
 
 // Route::resource('posts', PostController::class)->only(['index', 'store', 'create', 'edit', 'update', 'show'])->middleware(['auth', 'verified']);
