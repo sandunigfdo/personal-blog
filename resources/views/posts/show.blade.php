@@ -84,6 +84,7 @@
                                     @csrf
                                     <textarea
                                         name="body"
+                                        rows="3"
                                         placeholder="{{ __('What are your thoughts?') }}"
                                         class="block w-full border-gray-300 focus:border-gray-500 focus:ring focus:ring-gray-300 focus:ring-opacity-50 rounded-md text-sm"
                                     >{{ old('body') }}</textarea>
