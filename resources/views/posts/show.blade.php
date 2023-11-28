@@ -109,8 +109,28 @@
                                             <div class="flex justify-between items-center">
                                                 <div>
                                                     <span class="text-sm text-gray-800">{{ $comment->user->name }}</span>
-                                                    <time class="ml-2 text-xs text-gray-600">{{ $comment->created_at->diffForHumans() }}</time>
+                                                    @if ($comment->created_at->eq($comment->updated_at))
+                                                        <time class="text-xs text-gray-500">{{ __('Published :time', ['time' => $comment->created_at->diffForHumans()]) }}</time>
+                                                    @else
+                                                        <time class="text-xs text-gray-500">{{ __('Edited :time', ['time' => $comment->updated_at->diffForHumans()]) }}</time>
+                                                    @endif                                                                                                              
                                                 </div>
+                                                @if ($comment->user->is(auth()->user()))
+                                                    <x-dropdown>
+                                                        <x-slot name="trigger">
+                                                            <button>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                                </svg>
+                                                            </button>
+                                                        </x-slot>
+                                                        <x-slot name="content">
+                                                            <x-dropdown-link :href="route('comments.edit', $comment)">
+                                                                {{ __('Edit') }}
+                                                            </x-dropdown-link>
+                                                        </x-slot>
+                                                    </x-dropdown>
+                                                @endif
                                             </div>
                                             <p class="mt-4 text-sm text-gray-900">{{ $comment->body }}</p>
                                         </div>
