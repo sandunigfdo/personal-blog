@@ -1,6 +1,7 @@
 <x-app-layout>
+
     <div class="pb-12 sm:pb-12">
-        <div class="mx-auto max-w-6xl sm:px-6 px-6 lg:px-8 space-y-6">
+        <div class="max-w-6xl mx-auto sm:px-6 px-6 lg:px-8 space-y-6">
             
             <div class="max-w-6xl mx-auto lg:px-8">
                 <div class="border-b border-gray-900/10 pb-8">
@@ -12,7 +13,7 @@
             </div>
                                   
 
-            <div class="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-x-12 gap-y-16 sm:mt-16 sm:p-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div class="max-w-3xl mx-auto mt-8 grid  grid-cols-1 gap-x-12 gap-y-16 sm:mt-16 sm:p-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             
                 @foreach ($posts as $post)
                     <article class="flex max-w-xl flex-col items-start justify-between">
@@ -39,7 +40,7 @@
                             </p>
                         </div>                        
 
-                        <div class="relative mt-8 flex items-center gap-x-4">            
+                        <div class="relative pt-8 flex items-center gap-x-4">            
                             <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                             <div class="text-sm leading-6">
                                 <p class="font-semibold text-gray-900">
