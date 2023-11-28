@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -39,17 +40,29 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment)
+    public function edit(Comment $comment):View
     {
-        //
+        $this->authorize('update', $comment);
+ 
+        return view('comments.edit', [
+            'comment' => $comment,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Comment $comment):RedirectResponse
     {
-        //
+        $this->authorize('update', $comment);
+ 
+        $validated = $request->validate([
+            'body' => 'required|string|max:255',
+        ]);
+ 
+        $comment->update($validated);
+ 
+        return redirect(route('posts.show',$comment->post->id));
     }
 
     /**
