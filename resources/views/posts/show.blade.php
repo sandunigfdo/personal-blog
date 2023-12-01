@@ -100,6 +100,7 @@
                             </div>  
                             
                             <div class="max-w-3xl mx-auto sm:p-6 p-6 lg:p-8">
+
                                 @foreach ($post->comments as $comment)
                                     <div class="p-4 mt-8 flex space-x-2 rounded-md border border-gray-300 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -125,27 +126,52 @@
                                                             </button>
                                                         </x-slot>
                                                         <x-slot name="content">
-                                                            <x-dropdown-link :href="route('comments.edit', $comment)">
+                                                            <x-dropdown-link 
+                                                                :href="route('comments.edit', $comment)">
                                                                 {{ __('Edit') }}
-                                                            </x-dropdown-link>
-                                                            <form method="POST" action="{{ route('comments.destroy', $comment) }}">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <x-dropdown-link :href="route('comments.destroy', $comment)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                                    {{ __('Delete') }}
-                                                                </x-dropdown-link>
-                                                            </form>
+                                                            </x-dropdown-link>                                                        
+                                                            <button 
+                                                                class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                                                x-data=""
+                                                                x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+                                                            >
+                                                                {{ __('Delete')}}
+                                                            </button>
                                                         </x-slot>
-                                                    </x-dropdown>
+                                                    </x-dropdown>                                                    
                                                 @endif
                                             </div>
                                             <p class="mt-4 text-sm text-gray-900">{{ $comment->body }}</p>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforeach                                
                             </div>
 
                         </article>
+
+                        @if ($post->comments()->count())
+                            <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+                                <form method="post" action="{{ route('comments.destroy', $comment) }}" class="p-6">
+                                    @csrf
+                                    @method('delete')
+
+                                    <h2 class="text-lg font-medium text-gray-900">
+                                        {{ __('Are you sure you want to delete this comment?') }}
+                                    </h2>
+
+                                    <div class="mt-6 flex justify-end">
+                                        <x-secondary-button x-on:click="$dispatch('close')">
+                                            Cancel
+                                        </x-secondary-button>
+
+                                        <x-danger-button class="ms-3">
+                                            Delete
+                                        </x-danger-button>
+                                    </div>
+                                </form>
+                            </x-modal>
+                        @endif 
+
                     </div>                
                 </div>
             </div>
