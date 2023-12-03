@@ -34,9 +34,9 @@ class PostController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required',
+            'excerpt' => 'required|min:30|max:40', 
             // 'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
         ]);
 
@@ -75,9 +75,9 @@ class PostController extends Controller
         $this->authorize('update', $post);
 
         $validated = $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required',
+            'excerpt' => 'required|min:30|max:40', 
         ]);
 
         $post->update($validated);
