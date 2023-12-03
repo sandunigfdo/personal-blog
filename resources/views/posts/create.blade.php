@@ -23,12 +23,16 @@
                                 <div class="col-span-full">
                                     <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
                                         <div class="mt-2">                                    
-                                            <textarea 
+                                            <input 
                                                 id="title" 
                                                 name="title"
                                                 rows="1"                                         
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                            </textarea>
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                value="{{ old('title') }}"
+                                                required>                                            
+                                            @error('title')
+                                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                 </div>
 
@@ -40,8 +44,12 @@
                                                 id="body" 
                                                 name="body" 
                                                 rows="10" 
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                            </textarea>
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"                                                
+                                                required
+                                            >{{ old('body')}}</textarea>
+                                            @error('body')
+                                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                            @enderror
                                         </div>                            
                                 </div>
 
@@ -52,8 +60,13 @@
                                                 id="excerpt" 
                                                 name="excerpt" 
                                                 rows="4" 
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                            </textarea>
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"                                                
+                                                required
+                                            >{{ old('excerpt') }}</textarea>
+                                            @error('excerpt')
+                                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                            @enderror
+                                            
                                         </div>                            
                                 </div>
 
