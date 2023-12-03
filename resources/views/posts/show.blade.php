@@ -40,14 +40,14 @@
                                             <x-slot name="content">
                                                 <x-dropdown-link :href="route('posts.edit', $post)">
                                                     {{ __('Edit') }}
-                                                </x-dropdown-link>
-                                                <form method="POST" action="{{ route('posts.destroy', $post) }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <x-dropdown-link :href="route('posts.destroy', $post)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        {{ __('Delete') }}
-                                                    </x-dropdown-link>
-                                                </form>
+                                                </x-dropdown-link>                                                
+                                                <button 
+                                                    class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                                    x-data=""
+                                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion')"
+                                                >
+                                                    {{ __('Delete')}}
+                                                </button>                                                
                                             </x-slot>
                                         </x-dropdown>
                                     @endif
@@ -133,7 +133,7 @@
                                                             <button 
                                                                 class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                                                 x-data=""
-                                                                x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+                                                                x-on:click.prevent="$dispatch('open-modal', 'confirm-comment-deletion')"
                                                             >
                                                                 {{ __('Delete')}}
                                                             </button>
@@ -150,7 +150,7 @@
                         </article>
 
                         @if ($post->comments()->count())
-                            <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+                            <x-modal name="confirm-comment-deletion" focusable>
                                 <form method="post" action="{{ route('comments.destroy', $comment) }}" class="p-6">
                                     @csrf
                                     @method('delete')
@@ -171,6 +171,26 @@
                                 </form>
                             </x-modal>
                         @endif 
+                        <x-modal name="confirm-post-deletion" focusable>
+                            <form method="post" action="{{ route('posts.destroy', $post) }}" class="p-6">
+                                @csrf
+                                @method('delete')
+
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Are you sure you want to delete this post?') }}
+                                </h2>
+
+                                <div class="mt-6 flex justify-end">
+                                    <x-secondary-button x-on:click="$dispatch('close')">
+                                        Cancel
+                                    </x-secondary-button>
+
+                                    <x-danger-button class="ms-3">
+                                        Delete
+                                    </x-danger-button>
+                                </div>
+                            </form>
+                        </x-modal>
 
                     </div>                
                 </div>
