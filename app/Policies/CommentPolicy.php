@@ -45,7 +45,7 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        //
+        return $this->update($user, $comment);
     }
 
     /**
