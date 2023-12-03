@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('posts/{post:id}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::get('comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::patch('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });
 
 // Route::resource('posts', PostController::class)->only(['index', 'store', 'create', 'edit', 'update', 'show'])->middleware(['auth', 'verified']);
