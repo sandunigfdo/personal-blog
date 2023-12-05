@@ -36,7 +36,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required|min:30|max:40', 
+            'excerpt' => 'required|min:30', 
             // 'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
         ]);
 
@@ -77,7 +77,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required|min:30|max:40', 
+            'excerpt' => 'required|min:30', 
         ]);
 
         $post->update($validated);
