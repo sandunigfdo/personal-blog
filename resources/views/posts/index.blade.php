@@ -28,7 +28,7 @@
                                             @endif
                                             <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Category</a>
                                         </div>
-                                        <div class="group relative max-w-xl">
+                                        <div class="group relative max-w-3xl">
                                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                                                 <a href="/posts/{{ $post->id }}">
                                                     <span class="absolute inset-0"></span>
