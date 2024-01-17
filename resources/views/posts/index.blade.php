@@ -12,7 +12,7 @@
                 </div>
             </div>
     
-            <div class="max-w-3xl mx-auto sm:px-6 px-6 lg:px-8 space-y-6">
+            <div class="max-w-3xl space-y-6">
                 <div class="pb-8">
                     <div class="p-4 sm:p-8 bg-white sm:rounded-lg">
 
@@ -26,8 +26,40 @@
                                             @else
                                                 <time class="text-gray-500">{{ __('Edited :time', ['time' => $post->updated_at->diffForHumans()]) }}</time>
                                             @endif
-                                            <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Category</a>
+
+                                            <!-- <div class="hidden sm:flex sm:items-center sm:ms-6">
+                                                <x-dropdown align="right" width="48">
+                                                    <x-slot name="trigger">
+                                                        <button class="inline-flex items-center px-3 py-1.5 border border-transparent font-medium leading-4 font-medium rounded-full text-gray-600 bg-white hover:bg-gray-100 focus:outline-none transition ease-in-out duration-150">
+                                                            <div>{{ $post->category->name }}</div>
+
+                                                            <div class="ms-1">
+                                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                                </svg>
+                                                            </div>
+                                                        </button>
+                                                    </x-slot>
+
+                                                    <x-slot name="content">
+                                                        @foreach($categories as $category)
+                                                        <x-dropdown-link>
+                                                            {{ $category->name }}
+                                                        </x-dropdown-link>
+                                                        @endforeach
+                                                        
+                                                    </x-slot>
+                                                </x-dropdown>
+                                            </div> -->
+
+                                            
+
+                                            <a href="#" class="relative z-10 rounded-full px-2 py-1 text-xs font-medium text-indigo-800 ring-1 ring-inset ring-indigo-600/20 hover:bg-indigo-50">
+                                                {{ $post->category->name }}
+                                            </a>
+
                                         </div>
+
                                         <div class="group relative max-w-3xl">
                                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                                                 <a href="/posts/{{ $post->id }}">
