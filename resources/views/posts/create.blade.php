@@ -70,6 +70,59 @@
                                         </div>                            
                                 </div>
 
+                                <!-- old select -->
+                                <!-- <div class="sm:col-span-3">
+                                    <label for="category" class="text-sm font-medium leading-6 text-gray-900">Category</label>
+                                    <div class="mt-2">
+                                        <div x-data="{ show: false}">
+                                            <button 
+                                                @click="show = ! show"
+                                                id="category" 
+                                                type="button"
+                                                name="category" 
+                                                autocomplete="category-name" 
+                                                class="inline-flex justify-between pl-3 pr-6 py-1.5 text-left block w-56 rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6 ">
+                                                
+                                
+                                                Categories
+                                                <div>
+                                                    <svg class="fill-current h-6 w-6 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                   
+                                            
+                                            </button>
+
+                                            <div x-show="show" 
+                                                style="display: none" 
+                                                class="py-2 w-56 mt-2 z-50 border-0 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                                
+                                                <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">History</a>
+                                                <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">Cyber Security</a>
+                                                <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">Technology</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- old select end -->
+
+                                <!-- new select -->
+                                <div class="sm:col-span-3">
+                                    <label for="category" class="text-sm font-medium leading-6 text-gray-900">Category</label>
+                                    <div class="mt-2">
+                                        <select id="category" name="category" class="border border-gray-300 text-gray-900 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-indigo-600 dark:focus:border-indigo-600 mt-1">
+                                            
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>                                                
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- new select end -->
+                                
+
                                 <div class="col-span-full">
                                     <label for="thumbnail" class="block text-sm font-medium leading-6 text-gray-900">Thumbnail</label>
                                         <div class="mt-2 flex items-center gap-x-3">
