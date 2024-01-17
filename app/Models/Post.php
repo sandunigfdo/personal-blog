@@ -15,6 +15,9 @@ class Post extends Model
         'title', 
         'excerpt', 
         'body',
+        'category_id',
+        'user_id',
+        
     ];
 
     public function user():BelongsTo {
@@ -23,5 +26,9 @@ class Post extends Model
 
     public function comments():HasMany {
         return $this->hasMany(Comment::class);
+    }
+
+    public function category():BelongsTo {
+        return $this->belongsTo(Category::class);
     }
 }
