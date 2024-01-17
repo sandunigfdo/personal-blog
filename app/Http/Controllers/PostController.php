@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -17,6 +19,8 @@ class PostController extends Controller
     {
         return view('posts.index', [
             'posts' => Post::with('user')->latest()->get(),
+            'categories' => Category::all(),
+            
         ]);
     }
 
@@ -25,7 +29,9 @@ class PostController extends Controller
      */
     public function create(): View
     {
-        return view('posts.create');
+        return view('posts.create', [
+        'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -40,7 +46,15 @@ class PostController extends Controller
             // 'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
         ]);
 
-        $request->user()->posts()->create($validated);
+        // $request->user()->posts()->create($validated);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->category_id = $request->category;
+        $post->user_id = Auth::user()->id;
+        $post->save();
 
         return redirect(route('posts.index'));
     }
