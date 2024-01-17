@@ -17,14 +17,16 @@
 
                         <article class="max-w-xl items-start">              
                             <div class="flex items-center gap-x-4 text-xs justify-between">
-                                <div>
+                                <div class="flex items-center gap-x-4 text-xs">
 
                                     @if ($post->created_at->eq($post->updated_at))
                                         <time class="text-gray-500">{{ __('Published :time', ['time' => $post->created_at->diffForHumans()]) }}</time>
                                     @else
                                         <time class="text-gray-500">{{ __('Edited :time', ['time' => $post->updated_at->diffForHumans()]) }}</time>
                                     @endif
-                                    <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Category</a>
+                                    <a href="#" class="relative z-10 rounded-full px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-600/20 hover:bg-indigo-50">
+                                        {{ $post->category->name }}
+                                    </a>
                                 </div>
                                 
                                 <div>
