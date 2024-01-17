@@ -81,7 +81,7 @@
                     <div>
                         <div class="p-4 sm:p-8 bg-white sm:rounded-lg">                                            
                             
-                            <h5 class="flow-root">
+                            <h5>
                                 <span class="text-gray-900">Category</span>                                
                             </h5>
                             
