@@ -89,8 +89,8 @@
                                 <div class="space-y-6 text-sm">
                                     @foreach($categories as $category)
                                         <div class="flex items-center">
-                                            <input id="filter-mobile-category-0" name="category[]" value="{{ $category->id }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                                            <label for="filter-mobile-category-0" class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->name }}</label>
+                                            <input id="{{ $category->id }}" name="category[]" value="{{ $category->name }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <label for="{{ $category->id }}" class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->name }}</label>
                                         </div>
                                     @endforeach                                    
                                 </div>
