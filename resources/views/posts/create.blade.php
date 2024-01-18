@@ -108,7 +108,7 @@
                                 </div> -->
                                 <!-- old select end -->
 
-                                <!-- new select -->
+                                <!-- select menu -->
                                 <div class="sm:col-span-3">
                                     <label for="category" class="text-sm font-medium leading-6 text-gray-900">Category</label>
                                     <div class="mt-2">
@@ -120,7 +120,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- new select end -->
+                                <!-- end select menu -->
                                 
 
                                 <div class="col-span-full">
