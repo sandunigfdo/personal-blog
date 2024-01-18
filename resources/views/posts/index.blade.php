@@ -77,28 +77,22 @@
                     
                 </div>
                 
-                <div class="pl-24 w-1/3 font-xs">
-                    <div>
-                        <div class="p-4 sm:p-8 bg-white sm:rounded-lg">                                            
-                            
-                            <h5>
-                                <span class="text-gray-900">Category</span>                                
-                            </h5>
-                            
-                            <div class="pt-6" id="filter-section-mobile-1">
-                                <div class="space-y-6 text-sm">
-                                    @foreach($categories as $category)
-                                        <div class="flex items-center">
-                                            <input id="{{ $category->id }}" name="category[]" value="{{ $category->name }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                                            <label for="{{ $category->id }}" class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->name }}</label>
-                                        </div>
-                                    @endforeach                                    
-                                </div>
+                <div class="pl-24 w-1/3 font-xs">                    
+                    <div class="p-4 sm:p-8 bg-white sm:rounded-lg"> 
+                        <h5>
+                            <span class="text-gray-900">Category</span>                                
+                        </h5>
+                        <div class="pt-6" id="filter-section-mobile-1">
+                            <div class="space-y-6 text-sm">
+                                @foreach($categories as $category)
+                                    <div class="flex items-center">
+                                        <input id="{{ $category->id }}" name="category[]" value="{{ $category->name }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="{{ $category->id }}" class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->name }}</label>
+                                    </div>
+                                @endforeach                                    
                             </div>
-                            
                         </div>
                     </div>
-                    
                 </div>
         </div>
     </div>
