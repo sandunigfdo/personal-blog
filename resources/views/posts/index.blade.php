@@ -9,37 +9,52 @@
                         <!-- <h2 class="mt-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Stay curious.</h2>
                         <p class="mt-2 text-lg leading-8 text-gray-600">Discover stories.</p> -->
                         
+                        <div class="relative isolate flex flex-col gap-10 lg:flex-row">
                         <!-- Category Dropdown -->
-                        <div x-data="{ show: false }" @click.away="show = false">
-                            <button 
-                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                @click="show = ! show"  >                           
-                                
-                                    <div>{{ isset($currentCategory) ?  ucwords($currentCategory->name) : 'Categories' }}</div>
-                                    <div class="ms-1">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                            </button> 
 
-                            <div x-show="show" class="py-2 absolute bg-gray-100 w-32 mt-2 z-50" style="display: none">
-                                    <a  href="/posts" 
-                                        class="block text-left px-3 text-sm leading-6 hover:bg-blue-400 focus:bg-blue-400 hover:text-white focus:text-white">
-                                        All
-                                    </a>
-                                @foreach ($categories as $category)
-                                    <a  href="/categories/{{ $category->id }}" 
-                                        class="block text-left px-3 text-sm leading-6 hover:bg-blue-400 focus:bg-blue-400 hover:text-white focus:text-white
-                                        {{ isset($currentCategory) && $currentCategory->id == $category->id ? 'bg-blue-400 text-white' : '' }} ">
-                                        
-                                        {{ ucwords($category->name)}}
-                                    </a>
-                                @endforeach
-                                
+                            <div x-data="{ show: false }" @click.away="show = false">
+                                <button 
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                    @click="show = ! show"  >                           
+                                    
+                                        <div>{{ isset($currentCategory) ?  ucwords($currentCategory->name) : 'Categories' }}</div>
+                                        <div class="ms-1">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                </button> 
+
+                                <div x-show="show" class="py-2 absolute bg-gray-100 w-32 mt-2 z-50" style="display: none">
+                                        <a  href="/posts" 
+                                            class="block text-left px-3 text-sm leading-6 hover:bg-blue-400 focus:bg-blue-400 hover:text-white focus:text-white">
+                                            All
+                                        </a>
+                                    @foreach ($categories as $category)
+                                        <a  href="/categories/{{ $category->id }}" 
+                                            class="block text-left px-3 text-sm leading-6 hover:bg-blue-400 focus:bg-blue-400 hover:text-white focus:text-white
+                                            {{ isset($currentCategory) && $currentCategory->id == $category->id ? 'bg-blue-400 text-white' : '' }} ">
+                                            
+                                            {{ ucwords($category->name)}}
+                                        </a>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Search -->
+                            <div class="relative flex lg:inline-flex items-center">
+                                <form action="#" method="GET">
+                                    <input  type="text" 
+                                            name="search" 
+                                            placeholder="Quick Search"
+                                            value="{{ request('search') }}"
+                                            class="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                                </form>                           
+
                             </div>
                         </div>
-                        
 
                     </div>
                 </div>
