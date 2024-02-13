@@ -7,6 +7,7 @@
                 <div class="border-b border-gray-900/10 pb-8">
                     <div class="mx-auto max-w-2xl lg:mx-0">
                         <h2 class="mt-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $post->title }}</h2>
+                        <p class="mt-2 text-lg leading-8 text-gray-600">Read here.</p>
                     </div> 
                 </div>   
             </div>
@@ -30,7 +31,7 @@
                                 </div>
                                 
                                 <div>
-                                    @if ($post->user->is(auth()->user()))
+                                    @if ($post->author->is(auth()->user()))
                                         <x-dropdown>
                                             <x-slot name="trigger">
                                                 <button>
@@ -65,18 +66,11 @@
                             <div class="relative flex items-center gap-x-4 border-b border-gray-900/10 pt-8 pb-8 max-w-3xl mx-auto sm:px-6 px-6 lg:px-8">            
                                 <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                                 <div class="text-sm leading-6">
-                                    <p class="font-semibold text-gray-900">
-                                    @if ($post->user->is(auth()->user()))   
-                                        <a href="/profile">                                        
+                                    <p class="font-semibold text-gray-900">                                    
+                                        <a href="/authors/{{ $post->author->id }}">                                        
                                             <span class="absolute inset-0"></span>
-                                            {{ $post->user->name }}
+                                            {{ $post->author->name }}
                                         </a>
-                                    @else
-                                        <a href="{{ route('posts.show', $post) }}">                                        
-                                            <span class="absolute inset-0"></span>
-                                            {{ $post->user->name }}                                    
-                                        </a>
-                                    @endif
                                     </p>                                
                                 </div>
                             </div>
