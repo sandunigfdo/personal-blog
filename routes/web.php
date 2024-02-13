@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,12 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('categories/{category:id}', [CategoryController::class, 'index'])->name('category.index');
 
 });
+
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('authors/{author:id}', [UserController::class, 'index'])->name('author.index');
+
+});
+
 
 // Route::resource('posts', PostController::class)->only(['index', 'store', 'create', 'edit', 'update', 'show'])->middleware(['auth', 'verified']);
 
