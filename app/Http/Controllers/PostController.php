@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         
         return view('posts.index', [            
-            'posts' => Post::with('user')->latest()->filter(request()->only('search'))->get(),
+            'posts' => Post::with(['author', 'category'])->latest()->filter(request()->only('search'))->get(),
             'categories' => Category::all(),
             
         ]);
