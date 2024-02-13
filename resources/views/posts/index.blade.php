@@ -5,11 +5,11 @@
             
             <div class="max-w-6xl mx-auto lg:px-8">
                 <div class="border-b border-gray-900/10 pb-8">
-                    <div class="mt-8 mx-auto max-w-2xl lg:mx-0 mb-8">
+                    <div class="mt-8 mx-auto lg:mx-0 mb-8">
                         <!-- <h2 class="mt-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Stay curious.</h2>
                         <p class="mt-2 text-lg leading-8 text-gray-600">Discover stories.</p> -->
                         
-                        <div class="relative isolate flex flex-col gap-10 lg:flex-row">
+                        <div class="relative isolate flex flex-col justify-center space-x-10 lg:flex-row">
                         <!-- Category Dropdown -->
 
                             <div x-data="{ show: false }" @click.away="show = false">
@@ -98,19 +98,11 @@
                                             <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                                             <div class="text-sm leading-6">
                                                 <p class="font-semibold text-gray-900">
-                                                    @if ($post->user->is(auth()->user()))   
-                                                        <a href="/profile">                                        
-                                                            <span class="absolute inset-0"></span>
-                                                            {{ $post->user->name }}
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('posts.index') }}">                                        
-                                                            <span class="absolute inset-0"></span>
-                                                            {{ $post->user->name }}                                    
-                                                        </a>
-                                                    @endif  
+                                                    <a href="/authors/{{ $post->author->id }}">                                        
+                                                        <span class="absolute inset-0"></span>
+                                                        {{ $post->author->name }}
+                                                    </a>
                                                 </p>
-                                                
                                             </div>
                                         </div>
                                     </div>
