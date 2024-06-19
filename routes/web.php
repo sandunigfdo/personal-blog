@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
 //     Route::get('/', [PostController::class, 'index'])->name('posts.index');
-    
 // });
 
 
@@ -50,7 +49,6 @@ Route::middleware(['auth', 'verified'])->group(function (){
 });
 
 Route::middleware(['auth', 'verified'])->group(function (){
-    
     Route::post('posts/{post:id}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::get('comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::patch('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
