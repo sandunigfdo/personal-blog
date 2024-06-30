@@ -13,12 +13,11 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'excerpt', 
+        'title',
+        'excerpt',
         'body',
         'category_id',
         'user_id',
-        
     ];
 
     public function author():BelongsTo {

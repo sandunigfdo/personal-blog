@@ -15,13 +15,13 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index(): View
     {
-        
-        return view('posts.index', [            
+
+        return view('posts.index', [
             'posts' => Post::with(['author', 'category'])->latest()->filter(request()->only('search'))->get(),
             'categories' => Category::all(),
-            
+
         ]);
     }
 
@@ -43,7 +43,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required|min:30', 
+            'excerpt' => 'required|min:30',
             // 'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
         ]);
 
@@ -92,7 +92,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:10|max:255',
             'body' => 'required',
-            'excerpt' => 'required|min:30', 
+            'excerpt' => 'required|min:30',
         ]);
 
         $post->update($validated);
@@ -108,7 +108,7 @@ class PostController extends Controller
         $this->authorize('delete', $post);
 
         $post->delete();
-        
+
         return redirect(route('posts.index'));
     }
 }

@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    
+
     public function index(Category $category): View
     {
         return view('posts.index',[
             'posts' => $category->posts,
             'currentCategory' => $category,
-            'categories' => Category::all()
+            'categories' => Category::all(),
         ]);
     }
 }
